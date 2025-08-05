@@ -1,0 +1,168 @@
+{
+  "info": {
+    "name": "GetCID API",
+    "_postman_id": "a56c3cd3-e3c9-4a78-b356-9ea3e95a1b1e",
+    "description": "Colecci\u00f3n para consumir la API de GetCID.info, incluyendo ejemplos de respuestas exitosas y de error.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get Confirmation ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://getcid.info/api/{{iid}}/{{token}}",
+          "host": [
+            "https://getcid.info"
+          ],
+          "path": [
+            "api",
+            "{{iid}}",
+            "{{token}}"
+          ]
+        },
+        "description": "Realiza una solicitud GET para obtener el CID usando el IID y el Token"
+      },
+      "response": [
+        {
+          "name": "Success - CID Returned",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://getcid.info/api/{{iid}}/{{token}}",
+              "host": [
+                "https://getcid.info"
+              ],
+              "path": [
+                "api",
+                "{{iid}}",
+                "{{token}}"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "body": "260150672771490322851855366226271886248373443125"
+        },
+        {
+          "name": "Error - Wrong IID",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://getcid.info/api/{{iid}}/{{token}}",
+              "host": [
+                "https://getcid.info"
+              ],
+              "path": [
+                "api",
+                "{{iid}}",
+                "{{token}}"
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "body": "Wrong IID."
+        },
+        {
+          "name": "Error - Blocked IID",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://getcid.info/api/{{iid}}/{{token}}",
+              "host": [
+                "https://getcid.info"
+              ],
+              "path": [
+                "api",
+                "{{iid}}",
+                "{{token}}"
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "body": "Blocked IID."
+        },
+        {
+          "name": "Error - Token Not Found",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://getcid.info/api/{{iid}}/{{token}}",
+              "host": [
+                "https://getcid.info"
+              ],
+              "path": [
+                "api",
+                "{{iid}}",
+                "{{token}}"
+              ]
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "body": "Sorry, your API Token does not exist."
+        },
+        {
+          "name": "Error - Token Limit Reached",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://getcid.info/api/{{iid}}/{{token}}",
+              "host": [
+                "https://getcid.info"
+              ],
+              "path": [
+                "api",
+                "{{iid}}",
+                "{{token}}"
+              ]
+            }
+          },
+          "status": "Too Many Requests",
+          "code": 429,
+          "body": "Sorry, your API Token has been used 5/5 times."
+        },
+        {
+          "name": "Server Error",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://getcid.info/api/{{iid}}/{{token}}",
+              "host": [
+                "https://getcid.info"
+              ],
+              "path": [
+                "api",
+                "{{iid}}",
+                "{{token}}"
+              ]
+            }
+          },
+          "status": "Service Unavailable",
+          "code": 503,
+          "body": "Server too busy."
+        }
+      ]
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "key": "iid",
+      "value": "539979038249031308832790330685369121397625732562087764155620325"
+    },
+    {
+      "key": "token",
+      "value": "test1234567"
+    }
+  ]
+}
