@@ -71,18 +71,18 @@ export async function POST(request: NextRequest) {
       .single()
 
     if (keyError || !keyData) {
-      // Log failed attempt
+      // Log failed attempt with the attempted key
       await serviceClient.from('usage_logs').insert({
         software_key_id: null,
         iid,
         success: false,
-        error_message: 'Clave de activación inválida o inactiva',
+        error_message: `Clave inválida intentada: "${activationKey}" - La clave de activacion no se encuentra en nuestra base de datos`,
         ip_address: clientIP,
         user_agent: request.headers.get('user-agent') || null
       })
 
       return NextResponse.json(
-        { success: false, message: 'Clave de activación inválida o inactiva' },
+        { success: false, message: 'La clave de activacion no se encuentra en nuestra base de datos por favor ingresa una clave de activacion adquirida con nosotros.' },
         { status: 401 }
       )
     }
