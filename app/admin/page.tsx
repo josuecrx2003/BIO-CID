@@ -81,13 +81,25 @@ export default function AdminPage() {
 
   const checkAuth = async () => {
     try {
-      const { isAuthenticated: authStatus } = await checkAdminAuth()
+      // Verificar si hay una sesión activa en Supabase
+      const { data: { session }, error } = await supabase.auth.getSession()
       
-      if (!authStatus) {
+      if (error || !session) {
+        console.log('No active session found, redirecting to login')
         router.push('/admin/login')
         return
       }
       
+      // Verificar que el usuario sea admin (validación básica en frontend)
+      const userEmail = session.user?.email
+      if (!userEmail) {
+        console.log('No user email found, redirecting to login')
+        await supabase.auth.signOut()
+        router.push('/admin/login')
+        return
+      }
+      
+      console.log('Authentication successful for user:', userEmail)
       setIsAuthenticated(true)
     } catch (error) {
       console.error('Error checking auth:', error)

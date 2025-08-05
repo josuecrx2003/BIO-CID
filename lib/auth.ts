@@ -8,14 +8,14 @@ export const checkAdminAuth = async () => {
       return { isAuthenticated: false, user: null }
     }
 
-    // Verificar que el usuario sea el administrador
-    const isAdmin = user.email === process.env.NEXT_PUBLIC_ADMIN_EMAIL
-    
+    // El middleware ya se encarga de validar que sea admin
+    // Aquí solo verificamos que haya una sesión válida
     return { 
-      isAuthenticated: isAdmin, 
-      user: isAdmin ? user : null 
+      isAuthenticated: true, 
+      user: user 
     }
   } catch (error) {
+    console.error('Error in checkAdminAuth:', error)
     return { isAuthenticated: false, user: null }
   }
 }
