@@ -6,7 +6,7 @@ import { Toaster } from 'react-hot-toast'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'GetCID - Generador de CID',
+  title: 'BIO-CID - Sistema de Identificadores',
   description: 'Servicio para generar Content Identifier (CID) a partir de IID',
 }
 
