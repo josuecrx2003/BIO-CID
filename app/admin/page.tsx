@@ -867,19 +867,15 @@ export default function AdminPage() {
                             </div>
                           )}
 
-                          {/* IP Address */}
-                          {log.ip_address && (
-                            <div className="flex items-center space-x-4 pt-2 border-t border-gray-100">
-                              <span className="text-xs text-gray-500">
-                                IP: <code className="bg-gray-100 px-2 py-1 rounded">{log.ip_address}</code>
-                              </span>
-                              {log.user_agent && (
-                                <span className="text-xs text-gray-500 truncate">
-                                  User Agent: {log.user_agent}
-                                </span>
-                              )}
-                            </div>
-                          )}
+                          {/* Additional Info */}
+                          <div className="flex items-center space-x-4 pt-2 border-t border-gray-100">
+                            <span className="text-xs text-gray-500">
+                              ID: <code className="bg-gray-100 px-2 py-1 rounded">{log.id}</code>
+                            </span>
+                            <span className="text-xs text-gray-500">
+                              IID: <code className="bg-gray-100 px-2 py-1 rounded">{log.iid}</code>
+                            </span>
+                          </div>
                         </div>
                       </div>
                     ))}

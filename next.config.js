@@ -1,9 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Configuración optimizada para RSC y navegación
   swcMinify: true,
-  
-  // Headers para mejorar la navegación
   async headers() {
     return [
       {

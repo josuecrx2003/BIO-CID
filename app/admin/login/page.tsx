@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
-import { toast } from 'react-hot-toast'
+import toast from 'react-hot-toast'
 import { Eye, EyeOff, Lock, Mail, Key, Shield, ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
 
@@ -189,7 +189,10 @@ export default function AdminLogin() {
                   ¿Problemas para acceder?
                 </p>
                 <button
-                  onClick={() => toast.info('Contacta al administrador del sistema para restablecer tu acceso')}
+                  onClick={() => toast('Contacta al administrador del sistema para restablecer tu acceso', {
+                    icon: 'ℹ️',
+                    duration: 4000,
+                  })}
                   className="text-blue-600 hover:text-blue-700 font-medium text-sm transition-colors"
                 >
                   Solicitar ayuda técnica

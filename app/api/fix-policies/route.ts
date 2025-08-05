@@ -92,8 +92,9 @@ export async function POST(request: NextRequest) {
 
   } catch (error) {
     console.error('Error in fix-policies API:', error)
+    const errorMessage = error instanceof Error ? error.message : 'Error desconocido'
     return NextResponse.json(
-      { success: false, message: `Error interno: ${error.message}` },
+      { success: false, message: `Error interno: ${errorMessage}` },
       { status: 500 }
     )
   }
